@@ -1,7 +1,7 @@
 import { Marker, Popup } from "react-leaflet";
 import L from "leaflet";
 import { pb } from "../../repository/pocketbase";
-import React, { useRef, useState, useMemo } from "react";
+import { useRef, useState, useMemo } from "react";
 
 export function StaticMarker({ data }) {
 	// state
