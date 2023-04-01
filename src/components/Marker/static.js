@@ -79,9 +79,9 @@ export function StaticMarker({ data }) {
 			icon={data.tipe == "warnet" ? warnetIcon : defaultIcon}
 		>
 			<Popup minWidth={90}>
-				<div className="flex mb-5">
+				{/* <div className="flex mb-5">
 					<span className="text-xs">{`[${positionState.lat} , ${positionState.lng}]`}</span>
-				</div>
+				</div> */}
 				<div className="flex flex-col mb-1">
 					<div className="grid grid-cols-2 items-center">
 						<span className="font-bold mr-1 w-full">Nama</span>
