@@ -76,7 +76,7 @@ export function StaticMarker({ data }) {
 			position={positionState}
 			eventHandlers={eventHandlers}
 			draggable={true}
-			icon={data.tipe == "warnet" ? warnetIcon : defaultIcon}
+			icon={data.tipe === "warnet" ? warnetIcon : defaultIcon}
 		>
 			<Popup minWidth={90}>
 				{/* <div className="flex mb-5">

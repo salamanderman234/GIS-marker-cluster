@@ -1,11 +1,13 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { MapContainer, TileLayer, useMapEvents } from "react-leaflet";
 import { pb } from "../../repository/pocketbase";
 import { StaticMarker } from "../Marker/static";
 import { AddPositionModal } from "../Modal/map";
+import MarkerClusterGroup from "react-leaflet-cluster";
+import "leaflet/dist/leaflet.css";
 
-export const Map = ({ startPosition }) => {
-	const defaultMarkerPosition = startPosition || {
+export const Map = () => {
+	const defaultMarkerPosition = {
 		lat: -8.670458,
 		lng: 115.212631,
 	};
@@ -75,17 +77,12 @@ export const Map = ({ startPosition }) => {
 	const positionListMap = positionList.map((element) => {
 		const data = {
 			id: element.id,
+			position: element.position,
 			nama: element.name,
 			tipe: element.type,
-			detail: element.detail,
+			atribut: element.attribute,
 		};
-		return (
-			<StaticMarker
-				key={element.id}
-				position={element.position}
-				data={data}
-			/>
-		);
+		return <StaticMarker key={element.id} data={data} />;
 	});
 	// jsx
 	return (
@@ -105,7 +102,9 @@ export const Map = ({ startPosition }) => {
 					attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
 					url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
 				/>
-				{positionListMap}
+				<MarkerClusterGroup chunkedLoading>
+					{positionListMap}
+				</MarkerClusterGroup>
 				{/* event handler */}
 				<MyMap />
 			</MapContainer>

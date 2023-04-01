@@ -11,7 +11,7 @@ export const AddPositionModal = ({ position, onClose }) => {
 	const onSubmitEvent = async (e) => {
 		e.preventDefault();
 		let attribute = restoranAtribut;
-		if (tipe == "warnet") {
+		if (tipe === "warnet") {
 			attribute = warnetAtribut;
 		}
 		const newData = {
@@ -260,9 +260,9 @@ export const AddPositionModal = ({ position, onClose }) => {
 							<option value="warnet">Warnet</option>
 						</select>
 					</div>
-					{tipe == "warnet"
+					{tipe === "warnet"
 						? warnetAttribute
-						: tipe == "restoran"
+						: tipe === "restoran"
 						? restaurantAttribute
 						: ""}
 					<div className="flex justify-center mt-5">
